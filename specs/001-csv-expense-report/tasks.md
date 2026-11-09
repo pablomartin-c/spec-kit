@@ -22,10 +22,10 @@ description: "Task list for CSV Expense Mini-Report"
 
 **Purpose**: Python package skeleton and harness
 
-- [ ] T001 Create `pyproject.toml` with package `expense_report`, Python `>=3.12`, pytest dev dep, and console script `expense-report = expense_report.cli:main` — `uv sync` exits 0
-- [ ] T002 Create package dirs `src/expense_report/__init__.py` and empty module stubs per plan.md — `uv run python -c "import expense_report"` succeeds
-- [ ] T003 [P] Add root `.gitignore` entries for `.tmp/`, `__pycache__/`, `.venv/` (do not ignore `.specify/` or `specs/`) — file exists at repo root
-- [ ] T004 [P] Create `tests/conftest.py` with `FIXTURES` path helper pointing to `tests/fixtures/` — `uv run pytest --collect-only` exits 0
+- [x] T001 Create `pyproject.toml` with package `expense_report`, Python `>=3.12`, pytest dev dep, and console script `expense-report = expense_report.cli:main` — `uv sync` exits 0
+- [x] T002 Create package dirs `src/expense_report/__init__.py` and empty module stubs per plan.md — `uv run python -c "import expense_report"` succeeds
+- [x] T003 [P] Add root `.gitignore` entries for `.tmp/`, `__pycache__/`, `.venv/` (do not ignore `.specify/` or `specs/`) — file exists at repo root
+- [x] T004 [P] Create `tests/conftest.py` with `FIXTURES` path helper pointing to `tests/fixtures/` — `uv run pytest --collect-only` exits 0
 
 ---
 
@@ -35,11 +35,11 @@ description: "Task list for CSV Expense Mini-Report"
 
 **⚠️ CRITICAL**: No user story CLI work until reader + models tests pass
 
-- [ ] T005 [P] Add `tests/fixtures/valid_small.csv` (≥5 rows, 2+ categories) matching data-model header — file committed
-- [ ] T006 [P] Implement `ExpenseRow`, `ReportSummary`, `CategoryAggregate`, and exception types in `src/expense_report/models.py` per data-model.md — `uv run pytest tests/test_models.py` (after T007) passes
-- [ ] T007 [P] Write failing tests in `tests/test_models.py` for dataclass/errors — run before T006; **must FAIL** then pass after T006
-- [ ] T008 Write failing tests in `tests/test_reader.py` for happy parse of `valid_small.csv` (row count, decimal amounts, dates YYYY-MM-DD) — **must FAIL** before T009
-- [ ] T009 Implement `load_expenses(path)` in `src/expense_report/reader.py`: UTF-8 comma CSV, exact headers, amount `> 0`, non-empty category/description after strip, attach 1-based data row numbers — `uv run pytest tests/test_reader.py -k happy` passes
+- [x] T005 [P] Add `tests/fixtures/valid_small.csv` (≥5 rows, 2+ categories) matching data-model header — file committed
+- [x] T006 [P] Implement `ExpenseRow`, `ReportSummary`, `CategoryAggregate`, and exception types in `src/expense_report/models.py` per data-model.md — `uv run pytest tests/test_models.py` (after T007) passes
+- [x] T007 [P] Write failing tests in `tests/test_models.py` for dataclass/errors — run before T006; **must FAIL** then pass after T006
+- [x] T008 Write failing tests in `tests/test_reader.py` for happy parse of `valid_small.csv` (row count, decimal amounts, dates YYYY-MM-DD) — **must FAIL** before T009
+- [x] T009 Implement `load_expenses(path)` in `src/expense_report/reader.py`: UTF-8 comma CSV, exact headers, amount `> 0`, non-empty category/description after strip, attach 1-based data row numbers — `uv run pytest tests/test_reader.py -k happy` passes
 
 **Checkpoint**: `uv run pytest tests/test_models.py tests/test_reader.py` green (US1 not yet wired to CLI)
 
@@ -55,15 +55,15 @@ description: "Task list for CSV Expense Mini-Report"
 
 > Write FIRST; ensure RED before implementation.
 
-- [ ] T010 [P] [US1] Add failing tests in `tests/test_aggregate.py` for grand total, case-insensitive category grouping, largest expense tie-break (lowest row number) — **FAIL** before T011
-- [ ] T011 [P] [US1] Add failing golden test in `tests/test_report_writer.py` comparing output layout to snapshot for `valid_small.csv` — **FAIL** before T012
-- [ ] T012 [P] [US1] Add failing CLI test in `tests/test_cli.py`: success path creates output file with non-empty content — **FAIL** before T013–T015
+- [x] T010 [P] [US1] Add failing tests in `tests/test_aggregate.py` for grand total, case-insensitive category grouping, largest expense tie-break (lowest row number) — **FAIL** before T011
+- [x] T011 [P] [US1] Add failing golden test in `tests/test_report_writer.py` comparing output layout to snapshot for `valid_small.csv` — **FAIL** before T012
+- [x] T012 [P] [US1] Add failing CLI test in `tests/test_cli.py`: success path creates output file with non-empty content — **FAIL** before T013–T015
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Implement `summarize(rows)` in `src/expense_report/aggregate.py` (0.01 tolerance for internal sums per SC-003) — `uv run pytest tests/test_aggregate.py` passes
-- [ ] T014 [US1] Implement `write_report(summary, path)` in `src/expense_report/report_writer.py` per `contracts/cli.md` — `uv run pytest tests/test_report_writer.py` passes
-- [ ] T015 [US1] Implement `main()` in `src/expense_report/cli.py` with `--input`/`--output` (call reader → aggregate → writer) — `uv run pytest tests/test_cli.py -k success` passes
+- [x] T013 [US1] Implement `summarize(rows)` in `src/expense_report/aggregate.py` (0.01 tolerance for internal sums per SC-003) — `uv run pytest tests/test_aggregate.py` passes
+- [x] T014 [US1] Implement `write_report(summary, path)` in `src/expense_report/report_writer.py` per `contracts/cli.md` — `uv run pytest tests/test_report_writer.py` passes
+- [x] T015 [US1] Implement `main()` in `src/expense_report/cli.py` with `--input`/`--output` (call reader → aggregate → writer) — `uv run pytest tests/test_cli.py -k success` passes
 
 **Checkpoint**: US1 complete — `uv run expense-report -i tests/fixtures/valid_small.csv -o .tmp/report.txt` + full `tests/test_cli.py` success tests green
 
@@ -77,14 +77,14 @@ description: "Task list for CSV Expense Mini-Report"
 
 ### Tests for User Story 2
 
-- [ ] T016 [P] [US2] Add `tests/fixtures/empty_data.csv` (header only) and `tests/fixtures/bad_amount_row3.csv` (invalid amount on row 3) — files committed
-- [ ] T017 [P] [US2] Failing tests in `tests/test_reader.py` for `EMPTY_DATA`, `ROW_INVALID` with row number in message — **FAIL** until T018
-- [ ] T018 [P] [US2] Failing CLI tests in `tests/test_cli.py`: missing file, empty data, bad row (assert exit code ≠ 0, no output file) — **FAIL** until T019–T020
+- [x] T016 [P] [US2] Add `tests/fixtures/empty_data.csv` (header only) and `tests/fixtures/bad_amount_row3.csv` (invalid amount on row 3) — files committed
+- [x] T017 [P] [US2] Failing tests in `tests/test_reader.py` for `EMPTY_DATA`, `ROW_INVALID` with row number in message — **FAIL** until T018
+- [x] T018 [P] [US2] Failing CLI tests in `tests/test_cli.py`: missing file, empty data, bad row (assert exit code ≠ 0, no output file) — **FAIL** until T019–T020
 
 ### Implementation for User Story 2
 
-- [ ] T019 [US2] Extend `reader.py` with `INPUT_NOT_FOUND`, `HEADER_CONTRACT`, fail-fast `ROW_INVALID` (zero/negative amount, bad date, empty fields) — `uv run pytest tests/test_reader.py` passes
-- [ ] T020 [US2] Update `cli.py` to write report only after full successful parse+aggregate; errors to stderr + non-zero exit — `uv run pytest tests/test_cli.py` passes for US2 cases
+- [x] T019 [US2] Extend `reader.py` with `INPUT_NOT_FOUND`, `HEADER_CONTRACT`, fail-fast `ROW_INVALID` (zero/negative amount, bad date, empty fields) — `uv run pytest tests/test_reader.py` passes
+- [x] T020 [US2] Update `cli.py` to write report only after full successful parse+aggregate; errors to stderr + non-zero exit — `uv run pytest tests/test_cli.py` passes for US2 cases
 
 **Checkpoint**: `uv run pytest` all green; US2 scenarios in quickstart.md runnable
 
@@ -98,13 +98,13 @@ description: "Task list for CSV Expense Mini-Report"
 
 ### Tests for User Story 3
 
-- [ ] T021 [P] [US3] Add `tests/fixtures/multi_month.csv` (rows in two months) — file committed
-- [ ] T022 [P] [US3] Failing tests in `tests/test_reader.py` or `tests/test_aggregate.py` for month filter and `NO_ROWS_IN_PERIOD` — **FAIL** until T023
-- [ ] T023 [P] [US3] Failing CLI test with `--month` flag — **FAIL** until T024
+- [x] T021 [P] [US3] Add `tests/fixtures/multi_month.csv` (rows in two months) — file committed
+- [x] T022 [P] [US3] Failing tests in `tests/test_reader.py` or `tests/test_aggregate.py` for month filter and `NO_ROWS_IN_PERIOD` — **FAIL** until T023
+- [x] T023 [P] [US3] Failing CLI test with `--month` flag — **FAIL** until T024
 
 ### Implementation for User Story 3
 
-- [ ] T024 [US3] Add optional month filter in reader/aggregate pipeline and `--month` on CLI per research.md R6 — `uv run pytest` passes including US3 CLI test
+- [x] T024 [US3] Add optional month filter in reader/aggregate pipeline and `--month` on CLI per research.md R6 — `uv run pytest` passes including US3 CLI test
 
 **Checkpoint**: quickstart P3 command succeeds
 
@@ -112,9 +112,9 @@ description: "Task list for CSV Expense Mini-Report"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T025 Update root `README.md` with install, test, and example `expense-report` command linking to `quickstart.md` — manual read confirms
-- [ ] T026 Run full quickstart.md validation checklist; record command outputs in task notes or PR — all steps match expected outcomes
-- [ ] T027 [P] Add `specs/001-csv-expense-report/checklists/implementation.md` coverage tick after implement (optional self-audit FR ↔ tests) — file exists
+- [x] T025 Update root `README.md` with install, test, and example `expense-report` command linking to `quickstart.md` — manual read confirms
+- [x] T026 Run full quickstart.md validation checklist; record command outputs in task notes or PR — all steps match expected outcomes
+- [x] T027 [P] Add `specs/001-csv-expense-report/checklists/implementation.md` coverage tick after implement (optional self-audit FR ↔ tests) — file exists
 
 ---
 

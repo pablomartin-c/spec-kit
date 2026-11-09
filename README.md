@@ -2,25 +2,41 @@
 
 Personal workspace for practicing **Spec-Driven Development (SDD)**.
 
-This repository starts empty on purpose. The specification comes before code. This README is the first artifact.
+Active feature: **CSV expense mini-report** (`specs/001-csv-expense-report/`).
 
 ## What this repo is for
 
-SDD keeps intent and evidence ahead of implementation. An agent does not start coding until the problem, the observable behaviors, and the acceptance criteria are written down.
-
-Two references guide the work here:
-
-- [GitHub Spec Kit](https://github.com/github/spec-kit) and its [documentation](https://github.github.io/spec-kit/) — a toolkit that gives a coding agent a repeatable process (constitution, specify, plan, tasks, implement).
-- Dominicode’s adaptation (Bezael Pérez) — `spec.md`, `plan.md`, and `tasks.md`, plus the Contract Based Review Method: contract, lane, and verdict.
+SDD keeps intent and evidence ahead of implementation. Spec Kit skills under `.cursor/skills/` drive constitution → spec → plan → tasks → implement.
 
 ## Status
 
-| Artifact | Status |
+| Area | Status |
 | --- | --- |
-| README | This file |
-| Constitution, spec, plan, tasks | Not started |
-| Code and tests | Not started |
+| SDD artifacts | `specs/001-csv-expense-report/` (spec, plan, tasks) |
+| Application | Python CLI `expense-report` |
+| Tests | `uv run pytest` (19 tests) |
 
-## Next step
+## Setup and verify
 
-Pick a small domain and write the intent first: the problem and the outcome. Stack, endpoints, and data models wait until that intent is accepted.
+Requires [uv](https://github.com/astral-sh/uv) and Python 3.12+.
+
+```powershell
+cd spec-kit
+uv sync
+uv run pytest
+```
+
+Generate a report:
+
+```powershell
+New-Item -ItemType Directory -Force .tmp
+uv run expense-report -i tests/fixtures/valid_small.csv -o .tmp/report.txt
+Get-Content .tmp/report.txt
+```
+
+See [quickstart.md](specs/001-csv-expense-report/quickstart.md) for error paths and month filter.
+
+## References
+
+- [GitHub Spec Kit](https://github.com/github/spec-kit)
+- Dominicode / CBRM: contract (`spec.md`) → lane (tests) → verdict (commands + output)
