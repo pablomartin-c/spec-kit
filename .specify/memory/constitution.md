@@ -1,52 +1,50 @@
-# Spec Kit Practice Constitution
+# [PROJECT_NAME] Constitution
+<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### I. Spec-First
-Durable truth lives in artifacts (`constitution`, `spec`, `plan`, `tasks`), not in chat history.
-Code is a consequence of an accepted specification. If behavior must change, update the spec first,
-then the plan/tasks, then the code.
+### [PRINCIPLE_1_NAME]
+<!-- Example: I. Library-First -->
+[PRINCIPLE_1_DESCRIPTION]
+<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### II. What/Why vs How
-The specification describes **what** users can do and **why** it matters.
-Technology choices, libraries, schemas, and folder layout belong only in the **plan**.
-Mark unknowns with `[NEEDS CLARIFICATION]` instead of guessing.
+### [PRINCIPLE_2_NAME]
+<!-- Example: II. CLI Interface -->
+[PRINCIPLE_2_DESCRIPTION]
+<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-### III. Test-First (NON-NEGOTIABLE)
-No production behavior without a failing test first (red → green → refactor).
-"Done" requires runnable evidence: the command that proves the acceptance criterion, plus its output.
-Skipping TDD is out of scope for this practice project.
+### [PRINCIPLE_3_NAME]
+<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
+[PRINCIPLE_3_DESCRIPTION]
+<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### IV. Evidence Over Opinion
-Every acceptance criterion maps to a verification command.
-Reviews and hand-offs prefer a verdict (criterion → command → result) over "looks fine".
-Extra code without a contract is rejected or folded back into the spec before merge.
+### [PRINCIPLE_4_NAME]
+<!-- Example: IV. Integration Testing -->
+[PRINCIPLE_4_DESCRIPTION]
+<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### V. Simplicity for Learning
-Prefer the smallest stack that teaches the SDD loop.
-No premature abstractions, no speculative features, no "just in case" modules.
-One feature slice at a time; finish evidence before starting the next task.
+### [PRINCIPLE_5_NAME]
+<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
+[PRINCIPLE_5_DESCRIPTION]
+<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
 
-## Security and Environment
+## [SECTION_2_NAME]
+<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
 
-- Never commit credentials, API keys, tokens, or secrets.
-- Keep secrets in local env / secret store; document names only in README or plan.
-- Prefer PowerShell scripts on Windows; call out steps that may need IT approval.
+[SECTION_2_CONTENT]
+<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
 
-## Development Workflow
+## [SECTION_3_NAME]
+<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
 
-Artifact order for each feature:
-
-`constitution` (once per project) → `spec` → `clarify` → `plan` → `tasks` → `analyze` → `implement`
-
-- One artifact focus per turn; do not generate application code in the same turn as the first draft of a spec.
-- Agent guidance for this repo lives in `AGENTS.md` and/or `.cursor/rules/*.mdc` when added.
-- Spec Kit skills under `.cursor/skills/` are the preferred invocation path in Cursor.
+[SECTION_3_CONTENT]
+<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
 
 ## Governance
+<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-This constitution supersedes ad-hoc prompting when they conflict.
-Amendments require an explicit edit to this file, a version bump, and a one-line rationale in the change.
-All PRs must show: which principle(s) apply, and which command verified the change.
+[GOVERNANCE_RULES]
+<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-09 | **Last Amended**: 2026-11-09
+**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
